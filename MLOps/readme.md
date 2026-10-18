@@ -37,24 +37,62 @@
 
 ---
 # MLOps
-> You are here: `vertex-ai-mlops/MLOps/readme.md`
+> You are here: `gcp-mlops/MLOps/readme.md` ([⬅ Back to Repository Front Door](../readme.md))
 
 How are you going to manage data, features, training, models, deployment, monitoring, and all the connectivity between these?  How will your approach be impacted if the number of models increases 10x, 100x, or more?
 
 Let's talk about MLOps!
-
-> Note: This folder is in active development.  Check back often and provide feedback as it will help guide the build-out.
 
 ---
 ## Table of Contents
 
 - [MLOps](#mlops)
   - [Table of Contents](#table-of-contents)
+  - [Content Overview (100 Notebooks)](#content-overview-100-notebooks)
   - [ML Code: More Than A Model](#ml-code-more-than-a-model)
   - [Model Fleets: MLOps for Scale](#model-fleets-mlops-for-scale)
-  - [Content Overview](#content-overview)
-    - [Environment Setup Tips](#environment-setup-tips)
+  - [Environment Setup Tips](#environment-setup-tips)
   - [MLOps Resources \& References](#mlops-resources--references)
+
+---
+
+## Content Overview (100 Notebooks)
+
+```mermaid
+flowchart TD
+    Data["Offline Warehouse & Feature Engineering in BigQuery"]
+    Data --> FS["1. Feature Store Architectures (45 notebooks · 5 Decks)<br/>BigQuery (3) · Spanner (12) · Bigtable (15) · Valkey (9) · Vertex AI (6)"]
+    FS --> Train["2. Development, Experiments & Model Registry (3 notebooks)<br/>Colab Enterprise · Workbench · BigQuery Studio · Vertex AI Experiments"]
+    Train --> Serve["3. Model Serving Architectures (32 notebooks)<br/>Online Endpoints (7) · Batch (4) · SQL Inference (5)<br/>Cloud Run / GKE / Functions (4) · Triton (5) · vLLM (6)"]
+    Serve --> Orch["4. Orchestration, Evaluation & Monitoring (18 notebooks)<br/>Vertex AI Pipelines / KFP (13) · Model Evaluation (3) · Drift & Skew Monitoring (2)"]
+
+    classDef top fill:#1a73e8,stroke:#0b57d0,color:#fff
+    classDef stage fill:#e8f0fe,stroke:#1a73e8,color:#174ea6
+    class Data top
+    class FS,Serve,Orch stage
+```
+
+- **[Feature Store (`Feature Store/`)](./Feature%20Store/readme.md)** (45 notebooks + 5 architecture slide decks) — A ground-up comparison of **five feature store architectures** built on the same BigQuery offline data ([Overview Deck](./Feature%20Store/Feature%20Store%20Overview.pdf)):
+  - **[BigQuery Feature Store](./Feature%20Store/BigQuery/readme.md)** (3 notebooks · [Deck](./Feature%20Store/BigQuery/BigQuery%20Feature%20Store%20-%20Overview.pdf)) — Storage Read API, session caching, async serving, Dataplex governance, and a 3-way latency comparison.
+  - **[Spanner Feature Store](./Feature%20Store/Spanner/readme.md)** (12 notebooks · [Deck](./Feature%20Store/Spanner/Spanner%20Feature%20Store%20-%20Overview.pdf)) — SQL serving, secondary indexes, interleaved tables, ACID transactions, schema evolution, native vector search, multi-region replication, local emulator, and a recommendation capstone.
+  - **[Bigtable Feature Store](./Feature%20Store/Bigtable/readme.md)** (15 notebooks · [Deck](./Feature%20Store/Bigtable/Bigtable%20Feature%20Store%20-%20Overview.pdf)) — Single-digit-ms key-value serving, serialization formats, direct writes, streaming sync, schema evolution, vector search, replication, and a recommendation engine capstone.
+  - **[Valkey / Memorystore Feature Store](./Feature%20Store/Valkey/readme.md)** (9 notebooks · [Deck](./Feature%20Store/Valkey/Valkey%20Feature%20Store%20-%20Overview.pdf)) — Sub-millisecond in-memory serving, HNSW vector search, atomic counters, TTL management, and a real-time trading capstone.
+  - **[Vertex AI Feature Store](./Feature%20Store/vertex/readme.md)** (6 notebooks) — Managed online serving (Bigtable and Optimized nodes), feature views, registry, and embedding search.
+- **[Model Serving (`Serving/`)](./Serving/readme.md)** (32 notebooks) — Every major serving pattern on Google Cloud:
+  - **[Online Endpoints](./Serving/Online/readme.md)** (7 notebooks) — Dedicated, shared, and Private Service Connect (PSC) endpoints, Custom Prediction Routines (CPR), and autoscaling.
+  - **[Batch Inference](./Serving/Batch/readme.md)** (4 notebooks) — Vertex AI Batch Prediction, Dataflow, Dataproc, and Managed Airflow.
+  - **[SQL Inference](./Serving/SQL%20Inference/readme.md)** (5 notebooks) — Calling models from SQL in BigQuery ML, AlloyDB, and Spanner.
+  - **[Multi-Platform Deployment](./Serving/Platforms/readme.md)** (4 notebooks) — Serving custom containers on Cloud Run, GKE, and Cloud Functions.
+  - **[Triton Inference Server](./Serving/Triton/readme.md)** (5 notebooks) — Multi-model concurrency, dynamic batching, and ensemble pipelines on NVIDIA Triton.
+  - **[vLLM for LLM Serving](./Serving/vLLM/readme.md)** (6 notebooks) — High-throughput open-model LLM serving with PagedAttention, quantization, and LoRA adapters.
+- **[Vertex AI Pipelines (`Pipelines/`)](./Pipelines/readme.md)** (13 notebooks) — Kubeflow Pipelines (KFP) from scratch: lightweight Python and container components, artifact I/O, branching/loops/caching, scheduling, email notifications, lineage tracking, and reusable modular pipeline patterns.
+- **[Model Evaluation (`Model Evaluation/`)](./Model%20Evaluation/readme.md)** (3 notebooks) — Binary, multi-class, and multi-label classification evaluation integrated with Vertex AI Model Registry.
+- **[Model Monitoring (`Model Monitoring/`)](./Model%20Monitoring/readme.md)** (2 notebooks + SQL) — Feature skew and drift detection with BigQuery ML (`ML.VALIDATE_DATA_DRIFT`) and Vertex AI Model Monitoring v2.
+- **[Experiment Tracking (`Experiment Tracking/`)](./Experiment%20Tracking/readme.md)** (1 notebook) & **[Development Environments (`Development Environments/`)](./Development%20Environments/readme.md)** (2 notebooks) — Vertex AI Experiments autologging and programmatic notebook execution across Colab Enterprise, BigQuery Studio, and Vertex AI Workbench.
+
+<p align="center"><center>
+    <img src="./resources/images/external/mlops/overview.png" width="85%">
+</center></p>
 
 ---
 
@@ -117,22 +155,7 @@ As the workflow goes from one model to many models the practice of MLOps prevent
 Whew!! Is that enough?  The value of practicing MLOps is clear.  The core to this a bringing the entire workflow together into **pipelines** - the _'ops'_ in **MLOps**.  
 
 ---
-## Content Overview
-
-<p align="center"><center>
-    <img src="./resources/images/external/mlops/overview.png" width="90%">
-</center><p>
-
-| Section | Notebooks | Description |
-|---|---|---|
-| [Pipelines](./Pipelines/readme.md) | 12 | Orchestration with Vertex AI Pipelines — components, IO, control flow, scheduling, notifications, management, testing, and reusable patterns using KFP |
-| [Feature Store](./Feature%20Store/readme.md) | 45 | Feature management across the full latency/cost spectrum, all on BigQuery as the offline store ([overview deck](./Feature%20Store/Feature%20Store%20Overview.pdf) comparing all five): [BigQuery Feature Store](./Feature%20Store/BigQuery/readme.md) (3 notebooks — Storage Read API, session caching, async serving, Dataplex governance, three-way latency comparison) ([deck](./Feature%20Store/BigQuery/BigQuery%20Feature%20Store%20-%20Overview.pdf)); [Spanner Feature Store](./Feature%20Store/Spanner/readme.md) (12 notebooks — SQL serving, secondary indexes, interleaved tables, ACID transactions, schema evolution, native vector search, multi-region, emulator, recommendation capstone) ([deck](./Feature%20Store/Spanner/Spanner%20Feature%20Store%20-%20Overview.pdf)); [Bigtable Feature Store](./Feature%20Store/Bigtable/readme.md) (15 notebooks — direct writes, streaming, replication, vectors, recommendation engine) ([deck](./Feature%20Store/Bigtable/Bigtable%20Feature%20Store%20-%20Overview.pdf)); [Valkey Feature Store](./Feature%20Store/Valkey/readme.md) (9 notebooks — sub-ms in-memory serving, HNSW vector search, atomic counters, TTL, trading capstone) ([deck](./Feature%20Store/Valkey/Valkey%20Feature%20Store%20-%20Overview.pdf)); and [Vertex AI Feature Store](./Feature%20Store/vertex/readme.md) (6 notebooks — managed sync, feature registry, embeddings) |
-| [Model Serving](./Serving/readme.md) | 32 | Every major GCP serving pattern — [online prediction](./Serving/Online/readme.md) (7), [batch inference](./Serving/Batch/readme.md) (4), [SQL inference](./Serving/SQL%20Inference/readme.md) (5), [multi-platform deployment](./Serving/Platforms/readme.md) (4), [Triton Inference Server](./Serving/Triton/readme.md) (5), [vLLM for LLM serving](./Serving/vLLM/readme.md) (6), plus a foundational FastAPI notebook |
-| [Model Evaluation](./Model%20Evaluation/readme.md) | 3 | Evaluation metrics and Vertex AI Model Registry integration for binary, multi-class, and multi-label classification |
-| [Model Monitoring](./Model%20Monitoring/readme.md) | 2 | Feature skew and drift detection with BigQuery ML monitoring and Vertex AI Model Monitoring V2 |
-| [Experiment Tracking](./Experiment%20Tracking/readme.md) | 1 | Vertex AI Experiments — logging parameters, metrics, and artifacts with autologging for common ML frameworks |
-
-### Environment Setup Tips
+## Environment Setup Tips
 
 The notebooks in this project individually check for and install packages they require. To replicate the development environment with `pyenv` (Python version) and `venv` (for package versions) you can use this code:
 

@@ -36,7 +36,8 @@
 </table><br/><br/>
 
 ---
-# /Applied Forecasting/readme.md
+# Applied Forecasting
+> You are here: `gcp-mlops/Applied Forecasting/readme.md` ([⬅ Back to Repository Front Door](../readme.md))
 
 **Series Introduction: Applied Forecasting**
 
@@ -126,8 +127,10 @@ This list is in the suggested order of review for anyone getting an overview and
     - [Notes - BQML ARIMA+ Handling of Granularity and Missing Data](./Notes%20-%20BQML%20ARIMA%2B%20Handling%20of%20Granularity%20and%20Missing%20Data.ipynb)
 - Pre-trained Forecasting Models: Google Research Time Series Foundation Model (TimesFM)
     - [TimesFM - Time Series Foundation Model](./TimesFM%20-%20Time%20Series%20Foundation%20Model.ipynb)
+    - [TimesFM 2.5 - Time Series Foundation Model](./TimesFM%202.5%20-%20Time%20Series%20Foundation%20Model.ipynb)
+    - *See also*: Zero-shot SQL forecasting with `AI.FORECAST` in [`data+ai/bq-ai-functions/functions/ai_forecast/`](../data+ai/bq-ai-functions/functions/ai_forecast/), [`data+ai/bq-ai-functions/workflows/time_series_intelligence/`](../data+ai/bq-ai-functions/workflows/time_series_intelligence/), and the conversational [`Time Series Forecasting Agent`](../Applied%20ML/Solution%20Prototypes/time-series/readme.md).
 - Vertex AI AutoML: Global Forecasting for univariate or multi-variate including hierarchical forecasting
-    - 5 - [Vertex AI AutoML Forecasting - GCP Console (no code)](./Vertex%20AI%20AutoML%20Forecasting%20-%20GCP%20Console%20(no%20code).ipynb)
+    - 5 - [Vertex AI AutoML Forecasting - GCP Console (no code)](./Vertex%20AI%20AutoML%20Forecasting%20-%20GCP%20Console%20%28no%20code%29.ipynb)
     - 6 - [Vertex AI AutoML Forecasting - Python client](./Vertex%20AI%20AutoML%20Forecasting%20-%20Python%20client.ipynb)
     - 7 - [Vertex AI AutoML Forecasting - multiple simultaneously](./Vertex%20AI%20AutoML%20Forecasting%20-%20multiple%20simultaneously.ipynb)
 - Vertex AI Other: Global Forecasting for univariate or multi-variate including hierarchical forecasting
@@ -140,7 +143,7 @@ This list is in the suggested order of review for anyone getting an overview and
 - Vertex AI Pipelines: Automation for full forecasting workflows
     - 13 - [Vertex AI Pipelines - BQML ARIMA+](./Vertex%20AI%20Pipelines%20-%20BQML%20ARIMA+.ipynb)
     - 14 - [Vertex AI Pipelines - Prophet](./Vertex%20AI%20Pipelines%20-%20Prophet.ipynb)
-    - 15 - [Vertex AI Pipelines - Forecasting Tournament with Kubeflow Pipelines (KFP)](./Vertex%20AI%20Pipelines%20-%20Forecasting%20Tournament%20with%20Kubeflow%20Pipelines%20(KFP).ipynb)
+    - 15 - [Vertex AI Pipelines - Forecasting Tournament with Kubeflow Pipelines (KFP)](./Vertex%20AI%20Pipelines%20-%20Forecasting%20Tournament%20with%20Kubeflow%20Pipelines%20%28KFP%29.ipynb)
     - **Forecasting Pipelines** For more detailed starting points using Pipelines for forecasting I highly recommend [this repository](https://github.com/tottenjordan/vertex-forecas-repo) from coworker Jordan Totten!
 - Advanced Workflows:
     - [Vertex AI Prediction Endpoints for Online Forecasting With Prophet](./Vertex%20AI%20Prediction%20Endpoints%20for%20Online%20Forecasting%20With%20Prophet.ipynb)

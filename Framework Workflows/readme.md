@@ -37,38 +37,41 @@
 
 ---
 # Framework Workflows
-> You are here: `vertex-ai-mlops/Framework Workflows/readme.md`
+> You are here: `gcp-mlops/Framework Workflows/readme.md` ([⬅ Back to Repository Front Door](../readme.md))
 
-Using the tools from [MLOps](../MLOps/readme.md) in workflows for specific frameworks.  These start with notebook based workflows showcasing the features of the framework.  For each framework the workflows will focus on a common task:
-> Training a classification model on data that is stored in Google BigQuery
+Using the tools from [MLOps](../MLOps/readme.md) and [Data + AI](../data+ai/readme.md) in end-to-end workflows for specific ML frameworks (**39 notebooks**). For each framework, the workflows focus on a common task so you can compare them directly:
+> Training and serving models on shared data stored in Google BigQuery
 
-Information is shared between frameworks:
-- Each framework focuses on the same source data in BigQuery
-- The preparation and access to this data is the same across the frameworks - and shared in case you run examples from muliple frame works
-- Vertex AI resources are shared between example across frameworks
-    - Vertex AI Model Registry - models registered as different versions of the same model registry entry
-    - Vertex AI Feature Store - The online store is shared across frameworks
-    - Vertex AI One Prediction Endpoint - The endpoint used in example is the same, shared, and deleted at the end of examples
+Information and cloud resources are intentionally shared across frameworks:
+- **Shared Source Data**: Every framework trains on the same source data in BigQuery with consistent preparation and splits.
+- **Shared Vertex AI Resources**:
+  - **Vertex AI Model Registry** — Models register as versions under a shared registry structure.
+  - **Vertex AI Feature Store** — Online feature serving is shared across framework examples.
+  - **Vertex AI Prediction Endpoints** — Endpoints follow the same deployment and cleanup lifecycle.
 
-**Frameworks:**
-- [CatBoost](./CatBoost/readme.md)
-- [Keras](./Keras/readme.md)
-- [R](./R/readme.md) — running R on Google Cloud: one shared workflow across runtimes (interactive, Vertex AI Custom Training, Dataproc Serverless Spark-R, Vertex AI Pipelines), plus BigQuery→R data access (Iceberg/`arrow`) and R model serving
+```mermaid
+flowchart TD
+    BQ["Shared Source Data in Google BigQuery"]
+    BQ --> Train["Framework-Specific Training & Packaging (39 Notebooks)<br/>PyTorch (20) · R on GCP (6) · Vertex AI AutoML (6)<br/>Keras 3 Multi-Backend (3) · CatBoost (3) · Flax/JAX (1)"]
+    Train --> Reg["Shared Vertex AI Model Registry & Feature Store"]
+    Reg --> Serve["Cross-Service Model Serving & Inference<br/>Vertex AI Endpoints · BigQuery ML (ONNX/TF) · AlloyDB · Spanner<br/>Dataflow RunInference · TorchServe · Custom FastAPI Containers"]
 
-In-Progress
-- [Flax](./Flax/readme.md)
-- [Vertex AI AutoML](./Vertex%20AI%20AutoML/readme.md)
-- [BigQuery ML](./BQML/readme.md)
-- [PyTorch](./PyTorch/readme.md)
+    classDef top fill:#1a73e8,stroke:#0b57d0,color:#fff
+    classDef stage fill:#e8f0fe,stroke:#1a73e8,color:#174ea6
+    class BQ top
+    class Train,Serve stage
+```
 
-Planning:
-- LightGBM
-- scikit-learn
-- XGBoost
-- Pycaret
-- statsmodels
-- scipy
-- stan
-- PyMC
-- JAX (direct)
+## Frameworks
+
+- **[PyTorch (`PyTorch/`)](./PyTorch/readme.md)** (20 notebooks) — Custom autoencoder training plus 19 serving patterns spanning Vertex AI Endpoints, BigQuery ML (via ONNX), AlloyDB, Spanner, Dataflow `RunInference`, TorchServe, and load testing.
+- **[R on Google Cloud (`R/`)](./R/readme.md)** (6 notebooks) — One shared Generalized Linear Model (GLM) workflow executed across four GCP runtimes (interactive notebook, Vertex AI Custom Training container, Dataproc Serverless SparkR, and Vertex AI Pipelines), plus high-throughput BigQuery-to-R reads via Apache Iceberg/`arrow` and custom R model serving.
+- **[Vertex AI AutoML (`Vertex AI AutoML/`)](./Vertex%20AI%20AutoML/readme.md)** (6 notebooks) — Tabular classification, neural architecture inspection, TabNet, Wide & Deep, and feature engineering.
+- **[Keras (`Keras/`)](./Keras/readme.md)** (3 notebooks) — Multi-backend Keras 3 running on JAX and TensorFlow backends, autoencoder training, and BigQuery serving.
+- **[CatBoost (`CatBoost/`)](./CatBoost/readme.md)** (3 notebooks) — Gradient boosted trees served via custom FastAPI containers with Feature Store integration.
+- **[Flax / JAX (`Flax/`)](./Flax/readme.md)** (1 notebook) — Neural network training and serving with JAX and Flax.
+- **[BigQuery ML (`BQML/`)](./BQML/readme.md)** — Connects this shared dataset to BigQuery ML (for the full 62-notebook BigQuery ML curriculum, see [`data+ai/bq-ml/`](../data+ai/bq-ml/README.md)).
+
+### Additional Foundational Framework Series at Repo Root
+- **[`04 - scikit-learn`](../04%20-%20scikit-learn/readme.md)** (12 notebooks) & **[`05 - TensorFlow`](../05%20-%20TensorFlow/readme.md)** (28 notebooks) — Custom training jobs (script, source distribution, custom container), hyperparameter tuning, Vertex AI Pipelines, explainability, and serving.
 

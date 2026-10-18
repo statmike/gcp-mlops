@@ -37,9 +37,33 @@
 
 ---
 # Applied Generative AI
-> You are here: `vertex-ai-mlops/Applied GenAI/readme.md`
+> You are here: `gcp-mlops/Applied GenAI/readme.md` ([⬅ Back to Repository Front Door](../readme.md))
 
-This section covers workflows for working with [Generative AI on Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/overview), which are large models trained to continue inputs with likely outputs. While simply prompting an LLM to get helpful responses is a great starting point, the tools around these models unlock even more use cases and scalability. This enables you to quickly trial, iterate, and develop ideas into solutions. To jump right into generation, head over to the [Generate](./Generate/readme.md) section and learn all about Gemini models and Imagen.  You can also use the following table to jump to a section of interest, or keep reading here to discover this content as part of a narrative overview on applying generative AI.
+This section covers workflows for working with [Generative AI on Google Cloud](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/overview), which are large models trained to continue inputs with likely outputs (**58 active notebooks**, plus 23 legacy notebooks). While simply prompting an LLM to get helpful responses is a great starting point, the tools around these models unlock even more use cases and scalability. This enables you to quickly trial, iterate, and develop ideas into solutions. To jump right into generation, head over to the [Generate](./Generate/readme.md) section and learn all about Gemini models and Imagen. You can also use the following diagram and breakdown to jump to a section of interest, or keep reading to discover this content as part of a narrative overview on applying generative AI.
+
+## Content Overview (58 Active Notebooks)
+
+```mermaid
+flowchart TD
+    Docs["Unstructured Documents, Images, Audio & Video"]
+    Docs --> Chunk["1. Structure-Aware Chunking (Chunking/ — 3 notebooks)<br/>Document AI Layout Parser · PyMuPDF"]
+    Chunk --> Embed["2. Multimodal & Text Embeddings (Embeddings/ — 9 notebooks)<br/>gemini-embedding-2 · Task-Type Optimization · Dimensionality Reduction"]
+    Embed --> Retrieve["3. Retrieval & Vector Search Across 11 Databases (Retrieval/ — 14 notebooks)<br/>BigQuery · Vertex Vector Search · Feature Store · Spanner · AlloyDB · Cloud SQL<br/>Memorystore/Valkey · Firestore · Bigtable · Local · ChromaDB"]
+    Retrieve --> Rank["4. Re-Ranking & Hybrid Search (Ranking/ & Solutions/ — 9 notebooks)<br/>Vertex AI Ranking API · Dense + Sparse BM25 + Reciprocal Rank Fusion · RAG Engine"]
+    Rank --> Gen["5. Generation, Grounding & Evaluation (Generate/, Validate/, Evaluation/ — 16 notebooks)<br/>google-genai SDK · Context Caching · Structured Output · Check Grounding · LLM-as-a-Judge"]
+
+    classDef top fill:#1a73e8,stroke:#0b57d0,color:#fff
+    classDef stage fill:#e8f0fe,stroke:#1a73e8,color:#174ea6
+    class Docs top
+    class Retrieve,Rank,Gen stage
+```
+
+- **[Retrieval & Vector Search Across 11 Databases (`Retrieval/`)](./Retrieval/readme.md)** (14 notebooks) — Implements and benchmarks exact and approximate nearest-neighbor search across **BigQuery**, **Vertex AI Vector Search (Matching Engine)**, **Vertex AI Feature Store**, **Spanner**, **AlloyDB (`pgvector` / `ScaNN`)**, **Cloud SQL (`pgvector`)**, **Memorystore for Redis / Valkey**, **Firestore**, **Bigtable**, **Chrome/Local Vector Stores**, and **ChromaDB**, comparing setup complexity, recall, latency, and cost.
+- **[Generate (`Generate/`)](./Generate/readme.md)** (13 notebooks) — Google Gen AI SDK (`google-genai`), Gemini multimodal prompting, controlled structured output, context caching, token management, long-context retrieval, Imagen, and Veo.
+- **[Embeddings (`Embeddings/`)](./Embeddings/readme.md)** (9 notebooks) — Text and multimodal embeddings (`gemini-embedding-2`), task-type optimization, dimensionality reduction, the linear algebra of cosine/dot-product/Euclidean similarity, cross-modal retrieval, and interactive visualization.
+- **[Solutions (`Solutions/`)](./Solutions/readme.md)** (7 notebooks) & **[RAG Engine (`rag-engine/`)](./rag-engine/readme.md)** (1 notebook) — Production-grade multi-format document parsing combined with hybrid search (dense vector + sparse BM25 + Reciprocal Rank Fusion reranking) and Vertex AI RAG Engine custom backends.
+- **[Chunking (`Chunking/`)](./Chunking/readme.md)** (3 notebooks) — Structure-aware document parsing and chunking with Document AI Layout Parser and PyMuPDF.
+- **[Evaluation (`Evaluation/`)](./Evaluation/readme.md)** (2 notebooks), **[Ranking (`Ranking/`)](./Ranking/readme.md)** (1 notebook), & **[Validate (`Validate/`)](./Validate/readme.md)** (1 notebook) — LLM-as-a-judge evaluation, prompt optimization, cross-encoder re-ranking with the Vertex AI Ranking API, and grounding verification with Check Grounding.
 
 
   <table>
