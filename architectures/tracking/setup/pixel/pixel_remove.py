@@ -1,11 +1,11 @@
-# vertex-ai-mlops/architectures/tracking/setup/pixel/pixel_remove.py
+# gcp-mlops/architectures/tracking/setup/pixel/pixel_remove.py
 # this file, pixel_remove.py, will remove the tracking from files in the repository
 # to see files this will impact, first run pixel_list.py
 
 import os
 import json
 
-# this file is in: vertex-ai-mlops/architectures/tracking/setup/pixel/pixel_remove.py
+# this file is in: gcp-mlops/architectures/tracking/setup/pixel/pixel_remove.py
 for root, dirs, files in os.walk('../../../../.'):
     for file in files:
         if file.endswith(('.md', '.ipynb')) and not root.endswith('.ipynb_checkpoints'):
@@ -19,15 +19,12 @@ for root, dirs, files in os.walk('../../../../.'):
                     content = reader.readlines()
                 
                 # check for pixel track
-                if content[0].startswith('![tracker](https://'):
+                if content and content[0].startswith('![tracker](https://'):
                     content = content[1:]
                     update = True
                     # remove any blank lines at the start of the file (these were empty spaces/lines after the tracker)
-                    while True:
-                        if content[0] == '\n':
-                            content = content[1:]
-                        else:
-                            break
+                    while content and content[0] == '\n':
+                        content = content[1:]
                     
                 # update files with pixel track - remove the tracking
                 if update:
@@ -43,17 +40,14 @@ for root, dirs, files in os.walk('../../../../.'):
                     content = json.loads(reader.read())
                     
                 # check for pixel track
-                for cell in content['cells']:
-                    if cell['cell_type'] == 'markdown':
-                        if cell['source'][0].startswith('![tracker](https://'):
+                for cell in content.get('cells', []):
+                    if cell.get('cell_type') == 'markdown':
+                        if cell.get('source') and cell['source'][0].startswith('![tracker](https://'):
                             cell['source'] = cell['source'][1:]
                             update = True
                             # remove any blank lines at the start of the file/cell (these were empty spaces/lines after the tracker)
-                            while True:
-                                if cell['source'][0] == '\n':
-                                    cell['source'] = cell['source'][1:]
-                                else:
-                                    break
+                            while cell['source'] and cell['source'][0] == '\n':
+                                cell['source'] = cell['source'][1:]
                         # only review the first markdown cell then break the for loop
                         break
                 

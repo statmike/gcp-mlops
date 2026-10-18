@@ -4,7 +4,7 @@ import flask
 from flask import abort
 from google.cloud import pubsub_v1
 
-PROJECT_ID = 'statmike-mlops-349915'
+PROJECT_ID = 'vertex-ai-mlops-369716'
 pubsub_pubclient = pubsub_v1.PublisherClient() 
 
 def pixel_tracking(request: flask.Request) -> flask.Response:
@@ -15,7 +15,7 @@ def pixel_tracking(request: flask.Request) -> flask.Response:
     source = 'custom'
     
     if repo_path.startswith('statmike') and len(repo_path) < 500:
-        if len(repo_file) > 5 and len(repo_file) < 500:
+        if len(repo_file) >= 4 and len(repo_file) < 500:
             data = dict(
                 event_timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S.%f %Z"),
                 file_path = repo_path,
