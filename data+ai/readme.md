@@ -42,21 +42,24 @@
 Machine learning, generative AI, causal inference, and data engineering across Google Cloud's data services — bringing model training, foundation-model inference, and production orchestration directly to where the data already lives (**124 notebooks & 87 standalone SQL scripts**).
 
 ```mermaid
+%%{init: {'flowchart': {'wrappingWidth': 650, 'nodeSpacing': 25, 'rankSpacing': 30}}}%%
 flowchart TD
     Q["Question or Workload in BigQuery<br/>(Triage via choosing-a-bigquery-ai-approach Skill)"]
     Q --> PathA["Trained Model on Your Data<br/>bq-ml/ (62 notebooks · 58 SQL)<br/>+ bigquery-ml Skill"]
     Q --> PathB["Zero-Training GenAI & Foundation Models<br/>bq-ai-functions/ (45 notebooks · 29 SQL)<br/>+ bigquery-ai-functions Skill"]
-    PathA --> Models["23 Model Types · 12 ML.* Function Suites<br/>18 SQL Workflows (Causal Inference, Forecasting, Point-in-Time Features)"]
-    PathB --> Functions["29 AI.* & Remote ML.* Functions<br/>14 Composed Workflows (RAG, Hybrid Search, TimesFM, TabFM)"]
+    PathA --> Models["23 Model Types · 12 ML.* Function Suites<br/>18 SQL Workflows (Causal Inference · Forecasting · Point-in-Time Features)"]
+    PathB --> Functions["29 AI.* & Remote ML.* Functions<br/>14 Composed Workflows (RAG · Hybrid Search · TimesFM · TabFM)"]
     Models --> Scale["Operationalize & Scale Across Data + AI Services"]
     Functions --> Scale
     Scale --> Pipelines["8 Production Retrain & Quality-Gate Pipelines<br/>SQL Scripting · Scheduled Queries · Dataform · Workflows · dbt · KFP · Airflow"]
     Pipelines --> Cross["Cross-Service Compute & Database Serving<br/>Dataflow RunInference (CPU/GPU) · Dataproc Spark · Iceberg · AlloyDB & Spanner"]
 
-    classDef top fill:#1a73e8,stroke:#0b57d0,color:#fff
-    classDef branch fill:#e8f0fe,stroke:#1a73e8,color:#174ea6
+    classDef top fill:#1a73e8,stroke:#0b57d0,stroke-width:2px,color:#ffffff
+    classDef branch fill:#e8f0fe,stroke:#1a73e8,stroke-width:1.5px,color:#174ea6
+    classDef detail fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#0f172a
     class Q top
     class PathA,PathB,Scale branch
+    class Models,Functions,Pipelines,Cross detail
 ```
 
 ---

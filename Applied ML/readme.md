@@ -47,16 +47,19 @@ The workflows in this section combine:
 - In-database ML and AI functions covered in [Data + AI](../data+ai/readme.md)
 
 ```mermaid
+%%{init: {'flowchart': {'wrappingWidth': 650, 'nodeSpacing': 25, 'rankSpacing': 30}}}%%
 flowchart TD
     Root["Applied ML (Applied ML/)<br/>29 Notebooks · 60+ Architecture & Experiment Guides"]
-    Root --> Agents["1. AI Agents (AI Agents/) — 9 Projects<br/>Gemini Enterprise Platform Tour · 1,800-Cell NL2SQL MCP Benchmark<br/>BigQuery Context Discovery · Data Onboarding · RFI & Image-to-Graph"]
-    Agents --> Solutions["2. Solution Prototypes (Solution Prototypes/) — 13 Notebooks<br/>Document Processing & Fraud Agent (8)<br/>9-Way Product Hierarchy Classification (2) · Time Series Chat Agent (3)"]
+    Root --> Agents["1. AI Agents (AI Agents/ — 9 Projects)<br/>Gemini Enterprise Tour · 1,800-Cell NL2SQL MCP Benchmark<br/>BigQuery Context Discovery · Data Onboarding · RFI & Image-to-Graph"]
+    Agents --> Solutions["2. Solution Prototypes (Solution Prototypes/ — 13 Notebooks)<br/>Document Processing & Fraud Agent (8)<br/>9-Way Product Hierarchy Classification (2) · Time Series Chat Agent (3)"]
     Solutions --> Opt["3. Optimization, Forecasting & Specialized Workflows<br/>Vertex AI Vizier Black-Box Optimization · Hierarchical Forecasting<br/>Anomaly Detection · Applied GenAI Foundations"]
 
-    classDef top fill:#1a73e8,stroke:#0b57d0,color:#fff
-    classDef section fill:#e8f0fe,stroke:#1a73e8,color:#174ea6
+    classDef top fill:#1a73e8,stroke:#0b57d0,stroke-width:2px,color:#ffffff
+    classDef section fill:#e8f0fe,stroke:#1a73e8,stroke-width:1.5px,color:#174ea6
+    classDef detail fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#0f172a
     class Root top
-    class Agents,Solutions,Opt section
+    class Agents,Solutions section
+    class Opt detail
 ```
 
 ---

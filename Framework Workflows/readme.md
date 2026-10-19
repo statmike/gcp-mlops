@@ -50,16 +50,19 @@ Information and cloud resources are intentionally shared across frameworks:
   - **Vertex AI Prediction Endpoints** — Endpoints follow the same deployment and cleanup lifecycle.
 
 ```mermaid
+%%{init: {'flowchart': {'wrappingWidth': 650, 'nodeSpacing': 25, 'rankSpacing': 30}}}%%
 flowchart TD
     BQ["Shared Source Data in Google BigQuery"]
     BQ --> Train["Framework-Specific Training & Packaging (39 Notebooks)<br/>PyTorch (20) · R on GCP (6) · Vertex AI AutoML (6)<br/>Keras 3 Multi-Backend (3) · CatBoost (3) · Flax/JAX (1)"]
     Train --> Reg["Shared Vertex AI Model Registry & Feature Store"]
     Reg --> Serve["Cross-Service Model Serving & Inference<br/>Vertex AI Endpoints · BigQuery ML (ONNX/TF) · AlloyDB · Spanner<br/>Dataflow RunInference · TorchServe · Custom FastAPI Containers"]
 
-    classDef top fill:#1a73e8,stroke:#0b57d0,color:#fff
-    classDef stage fill:#e8f0fe,stroke:#1a73e8,color:#174ea6
+    classDef top fill:#1a73e8,stroke:#0b57d0,stroke-width:2px,color:#ffffff
+    classDef stage fill:#e8f0fe,stroke:#1a73e8,stroke-width:1.5px,color:#174ea6
+    classDef detail fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#0f172a
     class BQ top
     class Train,Serve stage
+    class Reg detail
 ```
 
 ## Frameworks

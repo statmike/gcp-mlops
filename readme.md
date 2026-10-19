@@ -38,7 +38,7 @@
 ---
 # MLOps, Data + AI, and Agents on Google Cloud
 
-Google Cloud's AI platform has gone through several names over the years — **Cloud ML Engine**, then **AI Platform**, then **Vertex AI**, and as of April 2026, **[Gemini Enterprise Agent Platform](https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform)**. Each name change tracked a real expansion in scope: from custom model training, to a unified ML platform with AutoML and managed notebooks, to the current platform where model building, agent development, evaluation, and governance live side by side.
+Google Cloud's AI platform has gone through several names over the years — **Cloud ML Engine**, then **AI Platform**, then **Vertex AI**, then **[Gemini Enterprise Agent Platform](https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform)**, and unified under the **[Gemini Enterprise](https://cloud.google.com/gemini-enterprise)** umbrella (which brings together the developer **Agent Platform**, the employee-facing **Gemini Enterprise** app formerly known as Agentspace, and **Gemini Enterprise for Customer Experience**). Each name change tracked a real expansion in scope: from custom model training, to a unified ML platform with AutoML and managed notebooks, to the current platform where model building, agent development, evaluation, and enterprise governance live side by side.
 
 This repository (`statmike/gcp-mlops`, formerly `vertex-ai-mlops`) has grown along that same path. It started as a collection of end-to-end training and serving workflows on Vertex AI and has expanded across the Google Cloud data and AI stack:
 - **In-database ML, GenAI, and causal inference** in BigQuery (`CREATE MODEL`, `ML.*`, and `AI.*` functions)
@@ -54,49 +54,28 @@ Across the repository you will find **580+ interactive notebooks**, **85+ standa
 ## How the Repository Is Organized
 
 ```mermaid
+%%{init: {'flowchart': {'wrappingWidth': 650, 'nodeSpacing': 25, 'rankSpacing': 30}}}%%
 flowchart TD
-    Start["statmike/gcp-mlops<br/>580+ Notebooks · 85+ SQL Scripts · Agent Skills"]
+    Start["statmike/gcp-mlops<br/>580+ Notebooks · 85+ SQL Scripts · Packaged Agent Skills"]
 
-    subgraph Layer1["1. Data + AI & In-Database ML (data+ai/)"]
-        direction TB
-        BQML["BigQuery ML (bq-ml/)<br/>23 Model Types · 12 ML.* Function Suites<br/>18 SQL Workflows (incl. Causal Inference) · 8 Pipelines"]
-        BQAI["BigQuery AI Functions (bq-ai-functions/)<br/>29 AI.* & Remote ML.* Functions<br/>14 Composed GenAI, Search & Forecasting Workflows"]
-        DataServices["Cross-Service Data + AI<br/>7-Way Training Comparison · Dataflow RunInference<br/>Dataproc Spark · Managed Airflow · Iceberg · AlloyDB & Spanner"]
-        BQML --> BQAI --> DataServices
-    end
+    P1["1. Data + AI & In-Database ML (data+ai/ — 124 notebooks · 87 SQL)<br/>BigQuery ML (23 Models · 12 ML.* Suites · 18 Workflows · 8 Pipelines)<br/>BigQuery AI Functions (29 Functions · 14 Workflows) · Dataflow · Dataproc · Iceberg"]
 
-    subgraph Layer2["2. AI Agents, GenAI & Solution Prototypes"]
-        direction TB
-        Agents["Applied AI Agents (Applied ML/AI Agents/)<br/>Gemini Enterprise Platform Tour · 1,800-Cell NL2SQL MCP Benchmark<br/>BigQuery Context Discovery · Data Onboarding · RFI & Image-to-Graph"]
-        Solutions["Solution Prototypes (Applied ML/Solution Prototypes/)<br/>Document Processing & Fraud Agent (8 notebooks)<br/>9-Way Product Hierarchy Classification · Time Series Chat Agent"]
-        GenAI["Applied GenAI (Applied GenAI/)<br/>11-Database Vector Retrieval Comparison · Multimodal Embeddings<br/>Structure-Aware Chunking · Ranking · Grounding · Hybrid Search"]
-        Agents --> Solutions --> GenAI
-    end
+    P2["2. Agent Skills (agent-skills/ — 3 SKILL.md suites)<br/>bigquery-ml · bigquery-ai-functions · choosing-a-bigquery-ai-approach"]
 
-    subgraph Layer3["3. MLOps Infrastructure (MLOps/)"]
-        direction TB
-        Serving["Model Serving (32 notebooks)<br/>Online Endpoints · Batch · SQL Inference<br/>Cloud Run / GKE / Functions · Triton · vLLM"]
-        FeatureStore["Feature Stores (45 notebooks)<br/>5 Architectures on Shared Data:<br/>BigQuery · Spanner · Bigtable · Valkey · Vertex AI"]
-        Pipelines["Pipelines, Monitoring & Evaluation (20 notebooks)<br/>Vertex AI Pipelines (KFP) · Drift & Skew Monitoring<br/>Model Registry Evaluation · Experiments · Dev Environments"]
-        Serving --> FeatureStore --> Pipelines
-    end
+    P3["3. Applied ML, AI Agents & Solutions (Applied ML/ — 29 notebooks · 60+ guides)<br/>9 AI Agent Projects (Gemini Enterprise Tour · 1,800-Cell NL2SQL MCP Benchmark)<br/>3 Solution Prototypes (Doc Fraud · 9-Way Taxonomy · Forecasting) · Vizier Optimization"]
 
-    subgraph Layer4["4. Frameworks, Forecasting & Agent Skills"]
-        direction TB
-        Skills["Agent Skills (agent-skills/)<br/>bigquery-ml · bigquery-ai-functions<br/>choosing-a-bigquery-ai-approach"]
-        Frameworks["Framework & Forecasting Series<br/>PyTorch (20) · R on GCP (6) · Keras · CatBoost · Flax · AutoML<br/>Applied Forecasting (20) · TensorFlow (28) · scikit-learn (12)"]
-        Skills --> Frameworks
-    end
+    P4["4. MLOps Infrastructure (MLOps/ — 100 notebooks)<br/>5 Feature Stores (BigQuery · Spanner · Bigtable · Valkey · Vertex AI)<br/>6 Model Serving Patterns (Online · Batch · SQL · Containers · Triton · vLLM) · KFP"]
 
-    Start --> Layer1
-    Layer1 --> Layer2
-    Layer2 --> Layer3
-    Layer3 --> Layer4
+    P5["5. Applied GenAI, Frameworks & Forecasting (117 notebooks)<br/>11-Database Vector Retrieval Comparison (Applied GenAI/ — 58 notebooks)<br/>Framework Workflows (PyTorch · R · AutoML · Keras · CatBoost · Flax) · Forecasting (20)"]
 
-    classDef root fill:#1a73e8,stroke:#0b57d0,color:#fff
-    classDef highlight fill:#e8f0fe,stroke:#1a73e8,color:#174ea6
+    Start --> P1 --> P2 --> P3 --> P4 --> P5
+
+    classDef root fill:#1a73e8,stroke:#0b57d0,stroke-width:2px,color:#ffffff
+    classDef primary fill:#e8f0fe,stroke:#1a73e8,stroke-width:1.5px,color:#174ea6
+    classDef secondary fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#0f172a
     class Start root
-    class BQML,BQAI,Agents,Serving,FeatureStore,Skills highlight
+    class P1,P3,P4 primary
+    class P2,P5 secondary
 ```
 
 ### Quick Navigation by Question

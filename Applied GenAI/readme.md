@@ -44,6 +44,7 @@ This section covers workflows for working with [Generative AI on Google Cloud](h
 ## Content Overview (58 Active Notebooks)
 
 ```mermaid
+%%{init: {'flowchart': {'wrappingWidth': 650, 'nodeSpacing': 25, 'rankSpacing': 30}}}%%
 flowchart TD
     Docs["Unstructured Documents, Images, Audio & Video"]
     Docs --> Chunk["1. Structure-Aware Chunking (Chunking/ — 3 notebooks)<br/>Document AI Layout Parser · PyMuPDF"]
@@ -52,10 +53,12 @@ flowchart TD
     Retrieve --> Rank["4. Re-Ranking & Hybrid Search (Ranking/ & Solutions/ — 9 notebooks)<br/>Vertex AI Ranking API · Dense + Sparse BM25 + Reciprocal Rank Fusion · RAG Engine"]
     Rank --> Gen["5. Generation, Grounding & Evaluation (Generate/, Validate/, Evaluation/ — 16 notebooks)<br/>google-genai SDK · Context Caching · Structured Output · Check Grounding · LLM-as-a-Judge"]
 
-    classDef top fill:#1a73e8,stroke:#0b57d0,color:#fff
-    classDef stage fill:#e8f0fe,stroke:#1a73e8,color:#174ea6
+    classDef top fill:#1a73e8,stroke:#0b57d0,stroke-width:2px,color:#ffffff
+    classDef stage fill:#e8f0fe,stroke:#1a73e8,stroke-width:1.5px,color:#174ea6
+    classDef detail fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#0f172a
     class Docs top
     class Retrieve,Rank,Gen stage
+    class Chunk,Embed detail
 ```
 
 - **[Retrieval & Vector Search Across 11 Databases (`Retrieval/`)](./Retrieval/readme.md)** (14 notebooks) — Implements and benchmarks exact and approximate nearest-neighbor search across **BigQuery**, **Vertex AI Vector Search (Matching Engine)**, **Vertex AI Feature Store**, **Spanner**, **AlloyDB (`pgvector` / `ScaNN`)**, **Cloud SQL (`pgvector`)**, **Memorystore for Redis / Valkey**, **Firestore**, **Bigtable**, **Chrome/Local Vector Stores**, and **ChromaDB**, comparing setup complexity, recall, latency, and cost.

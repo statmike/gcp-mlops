@@ -59,6 +59,7 @@ Let's talk about MLOps!
 ## Content Overview (100 Notebooks)
 
 ```mermaid
+%%{init: {'flowchart': {'wrappingWidth': 650, 'nodeSpacing': 25, 'rankSpacing': 30}}}%%
 flowchart TD
     Data["Offline Warehouse & Feature Engineering in BigQuery"]
     Data --> FS["1. Feature Store Architectures (45 notebooks · 5 Decks)<br/>BigQuery (3) · Spanner (12) · Bigtable (15) · Valkey (9) · Vertex AI (6)"]
@@ -66,10 +67,12 @@ flowchart TD
     Train --> Serve["3. Model Serving Architectures (32 notebooks)<br/>Online Endpoints (7) · Batch (4) · SQL Inference (5)<br/>Cloud Run / GKE / Functions (4) · Triton (5) · vLLM (6)"]
     Serve --> Orch["4. Orchestration, Evaluation & Monitoring (18 notebooks)<br/>Vertex AI Pipelines / KFP (13) · Model Evaluation (3) · Drift & Skew Monitoring (2)"]
 
-    classDef top fill:#1a73e8,stroke:#0b57d0,color:#fff
-    classDef stage fill:#e8f0fe,stroke:#1a73e8,color:#174ea6
+    classDef top fill:#1a73e8,stroke:#0b57d0,stroke-width:2px,color:#ffffff
+    classDef stage fill:#e8f0fe,stroke:#1a73e8,stroke-width:1.5px,color:#174ea6
+    classDef detail fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#0f172a
     class Data top
     class FS,Serve,Orch stage
+    class Train detail
 ```
 
 - **[Feature Store (`Feature Store/`)](./Feature%20Store/readme.md)** (45 notebooks + 5 architecture slide decks) — A ground-up comparison of **five feature store architectures** built on the same BigQuery offline data ([Overview Deck](./Feature%20Store/Feature%20Store%20Overview.pdf)):
