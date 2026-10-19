@@ -37,6 +37,7 @@
 
 ---
 # ML, MLOps, Data + AI, and Agents on Google Cloud
+### Data Science Workflows for GCP
 
 Google Cloud's AI platform has gone through several names over the years — **Cloud ML Engine**, then **AI Platform**, then **Vertex AI**, then **[Gemini Enterprise Agent Platform](https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform)**, and unified under the **[Gemini Enterprise](https://cloud.google.com/gemini-enterprise)** umbrella (which brings together the developer **Agent Platform**, the employee-facing **Gemini Enterprise** app formerly known as Agentspace, and **Gemini Enterprise for Customer Experience**). Each name change tracked a real expansion in scope: from custom model training, to a unified ML platform with AutoML and managed notebooks, to the current platform where model building, agent development, evaluation, and enterprise governance live side by side.
 
