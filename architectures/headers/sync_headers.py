@@ -40,18 +40,20 @@ EXCLUDE = [
     'MLOps/Feature Store/Valkey/Valkey Feature Store - Overview.md',
 ]
 
+ICON_BASE = f'https://raw.githubusercontent.com/{GITHUB_ACCOUNT}/{REPO_NAME}/main/architectures/headers/icons'
+
 ICONS = dict(
-    bigquery='https://www.gstatic.com/images/branding/gcpiconscolors/bigquery/v1/32px.svg',
-    github='https://www.svgrepo.com/download/217753/github.svg',
-    colab='https://www.gstatic.com/pantheon/images/bigquery/welcome_page/colab-logo.svg',
-    ecolab='https://lh3.googleusercontent.com/JmcxdQi-qOpctIvWKgPtrzZdJJK-J3sWE1RsfjZNwshCFgE_9fULcNpuXYTilIR2hjwN',
-    vertex='https://www.gstatic.com/images/branding/gcpiconscolors/vertexai/v1/32px.svg',
-    download='https://www.svgrepo.com/download/5445/download-button.svg',
-    linkedin='https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg',
-    bluesky='https://upload.wikimedia.org/wikipedia/commons/7/7a/Bluesky_Logo.svg',
-    twitter='https://upload.wikimedia.org/wikipedia/commons/5/5a/X_icon_2.svg',
-    reddit='https://redditinc.com/hubfs/Reddit%20Inc/Brand/Reddit_Logo.png',
-    youtube='https://upload.wikimedia.org/wikipedia/commons/f/fd/YouTube_full-color_icon_%282024%29.svg',
+    bigquery=f'{ICON_BASE}/bigquery.svg',
+    github=f'{ICON_BASE}/github.svg',
+    colab=f'{ICON_BASE}/colab.svg',
+    ecolab=f'{ICON_BASE}/ecolab.png',
+    vertex=f'{ICON_BASE}/vertex.svg',
+    download=f'{ICON_BASE}/download.svg',
+    linkedin=f'{ICON_BASE}/linkedin.svg',
+    bluesky=f'{ICON_BASE}/bluesky.svg',
+    twitter=f'{ICON_BASE}/x.svg',
+    reddit=f'{ICON_BASE}/reddit.png',
+    youtube=f'{ICON_BASE}/youtube.svg',
 )
 
 
@@ -297,14 +299,31 @@ def main() -> int:
                 if prior != expected_header:
                     drifted.append(rel_path)
                     if args.apply:
-                        import nbformat as nbf
-                        nb = nbf.read(full_path, nbf.NO_CONVERT)
-                        header_cell = nbf.v4.new_markdown_cell(source=expected_header)
-                        if end_index == 0:
-                            nb['cells'].insert(0, header_cell)
-                        else:
-                            nb['cells'][0] = header_cell
-                        nbf.write(nb, full_path, version=nbf.NO_CONVERT)
+                        try:
+                            import nbformat as nbf
+                            nb = nbf.read(full_path, nbf.NO_CONVERT)
+                            header_cell = nbf.v4.new_markdown_cell(source=expected_header)
+                            if end_index == 0:
+                                nb['cells'].insert(0, header_cell)
+                            else:
+                                if 'id' in nb['cells'][0]:
+                                    header_cell['id'] = nb['cells'][0]['id']
+                                else:
+                                    header_cell.pop('id', None)
+                                nb['cells'][0] = header_cell
+                            nbf.write(nb, full_path, version=nbf.NO_CONVERT)
+                        except ImportError:
+                            lines = expected_header.split('\n')
+                            src_list = [l + '\n' for l in lines[:-1]] + ([lines[-1]] if lines[-1] else [])
+                            if end_index == 0:
+                                nb_raw.setdefault('cells', []).insert(
+                                    0, {'cell_type': 'markdown', 'metadata': {}, 'source': src_list}
+                                )
+                            else:
+                                nb_raw['cells'][0]['source'] = src_list
+                            with open(full_path, 'w', encoding='utf-8') as f:
+                                json.dump(nb_raw, f, indent=1, ensure_ascii=False)
+                                f.write('\n')
                         updated += 1
                 audited += 1
 
