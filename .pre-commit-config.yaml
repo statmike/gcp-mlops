@@ -1,0 +1,23 @@
+# Local pre-commit hooks for statmike/gcp-mlops.
+# Install once with: pre-commit install
+# Run manually across all files with: pre-commit run --all-files
+
+repos:
+  - repo: local
+    hooks:
+      - id: uv-lock-public-pypi
+        name: uv.lock public PyPI registry & zero internal URLs (all subprojects)
+        entry: >-
+          python3 -c "import pathlib, re, sys;
+          locks = [p for p in pathlib.Path('.').rglob('uv.lock') if '.venv' not in p.parts];
+          bad = [f'{p}: {s}' for p in locks for s in set(re.findall(r'registry = \"([^\"]+)\"', p.read_text())) if s != 'https://pypi.org/simple'];
+          leaks = [str(p) for p in locks if re.search(r'airlock-proxy\.uplink\.goog|artifact-foundry-prod|\.corp\.google\.com', p.read_text())];
+          sys.exit('Non-public uv.lock registry or internal URL detected: ' + ', '.join(bad + leaks) if (bad or leaks) else 0)"
+        language: system
+        pass_filenames: false
+
+      - id: sync-headers-check
+        name: sync_headers.py --check (header & tracker consistency)
+        entry: python3 architectures/headers/sync_headers.py --check
+        language: system
+        pass_filenames: false
