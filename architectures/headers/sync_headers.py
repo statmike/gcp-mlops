@@ -23,7 +23,6 @@ EXCLUDE = [
     'CONTRIBUTING.md',
     'CODE_OF_CONDUCT.md',
     'SECURITY.md',
-    'agent-skills',
     '.agents',
     '.claude',
     'Applied ML/AI Agents/image-to-graph/examples',

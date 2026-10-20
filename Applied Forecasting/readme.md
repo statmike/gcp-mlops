@@ -128,7 +128,7 @@ This list is in the suggested order of review for anyone getting an overview and
 - Pre-trained Forecasting Models: Google Research Time Series Foundation Model (TimesFM)
     - [TimesFM - Time Series Foundation Model](./TimesFM%20-%20Time%20Series%20Foundation%20Model.ipynb)
     - [TimesFM 2.5 - Time Series Foundation Model](./TimesFM%202.5%20-%20Time%20Series%20Foundation%20Model.ipynb)
-    - *See also*: Zero-shot SQL forecasting with `AI.FORECAST` in [`data+ai/bq-ai-functions/functions/ai_forecast/`](../data+ai/bq-ai-functions/functions/ai_forecast/), [`data+ai/bq-ai-functions/workflows/time_series_intelligence/`](../data+ai/bq-ai-functions/workflows/time_series_intelligence/), and the conversational [`Time Series Forecasting Agent`](../Applied%20ML/Solution%20Prototypes/time-series/readme.md).
+    - *See also*: Zero-shot SQL forecasting with `AI.FORECAST` in [`data+ai/bq-ai-functions/functions/ai_forecast/`](https://github.com/statmike/bigquery-data-science/tree/main/bigquery-ai/functions/ai_forecast), [`data+ai/bq-ai-functions/workflows/time_series_intelligence/`](https://github.com/statmike/bigquery-data-science/tree/main/bigquery-ai/workflows/time_series_intelligence), and the conversational [`Time Series Forecasting Agent`](../Applied%20ML/Solution%20Prototypes/time-series/readme.md).
 - Vertex AI AutoML: Global Forecasting for univariate or multi-variate including hierarchical forecasting
     - 5 - [Vertex AI AutoML Forecasting - GCP Console (no code)](./Vertex%20AI%20AutoML%20Forecasting%20-%20GCP%20Console%20%28no%20code%29.ipynb)
     - 6 - [Vertex AI AutoML Forecasting - Python client](./Vertex%20AI%20AutoML%20Forecasting%20-%20Python%20client.ipynb)

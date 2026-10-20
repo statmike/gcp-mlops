@@ -1,92 +1,179 @@
-# Agent Skills
+![tracker](https://us-central1-vertex-ai-mlops-369716.cloudfunctions.net/pixel-tracking?path=statmike%2Fgcp-mlops%2Fagent-skills&file=README.md)
+<!--- header table --->
+<table>
+<tr>     
+  <td style="text-align: center">
+    <a href="https://github.com/statmike/gcp-mlops/blob/main/agent-skills/README.md">
+      <img width="32px" src="https://raw.githubusercontent.com/statmike/gcp-mlops/main/architectures/headers/icons/github.svg" alt="GitHub logo">
+      <br>View on<br>GitHub
+    </a>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: right">
+    <b>Share On: </b> 
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/statmike/gcp-mlops/blob/main/agent-skills/README.md"><img src="https://raw.githubusercontent.com/statmike/gcp-mlops/main/architectures/headers/icons/linkedin.svg" alt="Linkedin Logo" width="20px"></a> 
+    <a href="https://reddit.com/submit?url=https://github.com/statmike/gcp-mlops/blob/main/agent-skills/README.md"><img src="https://raw.githubusercontent.com/statmike/gcp-mlops/main/architectures/headers/icons/reddit.png" alt="Reddit Logo" width="20px"></a> 
+    <a href="https://bsky.app/intent/compose?text=https://github.com/statmike/gcp-mlops/blob/main/agent-skills/README.md"><img src="https://raw.githubusercontent.com/statmike/gcp-mlops/main/architectures/headers/icons/bluesky.svg" alt="BlueSky Logo" width="20px"></a> 
+    <a href="https://x.com/intent/post?url=https://github.com/statmike/gcp-mlops/blob/main/agent-skills/README.md"><img src="https://raw.githubusercontent.com/statmike/gcp-mlops/main/architectures/headers/icons/x.svg" alt="X (Twitter) Logo" width="20px"></a> 
+  </td>
+</tr>
+<tr>
+  <td style="text-align: right">
+    <b>Connect With Author On: </b> 
+    <a href="https://www.linkedin.com/in/statmike"><img src="https://raw.githubusercontent.com/statmike/gcp-mlops/main/architectures/headers/icons/linkedin.svg" alt="Linkedin Logo" width="20px"></a>
+    <a href="https://github.com/statmike"><img src="https://raw.githubusercontent.com/statmike/gcp-mlops/main/architectures/headers/icons/github.svg" alt="GitHub Logo" width="20px"></a> 
+    <a href="https://www.youtube.com/@statmike-channel"><img src="https://raw.githubusercontent.com/statmike/gcp-mlops/main/architectures/headers/icons/youtube.svg" alt="YouTube Logo" width="20px"></a>
+    <a href="https://bsky.app/profile/statmike.bsky.social"><img src="https://raw.githubusercontent.com/statmike/gcp-mlops/main/architectures/headers/icons/bluesky.svg" alt="BlueSky Logo" width="20px"></a> 
+    <a href="https://x.com/statmike"><img src="https://raw.githubusercontent.com/statmike/gcp-mlops/main/architectures/headers/icons/x.svg" alt="X (Twitter) Logo" width="20px"></a>
+  </td>
+</tr>
+<tr>
+  <td style="text-align: right">
+    <a href="https://raw.githubusercontent.com/statmike/gcp-mlops/main/agent-skills/README.md"><img src="https://raw.githubusercontent.com/statmike/gcp-mlops/main/architectures/headers/icons/download.svg" alt="Download icon" width="20px"></a> <a href="https://raw.githubusercontent.com/statmike/gcp-mlops/main/agent-skills/README.md">Download File</a> <i>(right-click and "Save As")</i>
+  </td>
+</tr>
+</table><br/><br/>
 
-Packaged, cross-tool [Agent Skills](https://code.claude.com/docs/en/skills.md) distilled from this repo's tested notebooks and reference docs — built for AI coding agents (Claude Code, Google Antigravity, Codex, and any tool that reads the `SKILL.md` convention), not just human readers.
+---
+# Agent Skills for BigQuery ML & BigQuery AI (`bigquery-data-science`)
+> You are here: `gcp-mlops/agent-skills/README.md` ([⬅ Back to Repository Front Door](../readme.md) · [Data + AI Hub](../data+ai/readme.md))
 
-## Why this exists
+[![PyPI](https://img.shields.io/pypi/v/bigquery-data-science?style=for-the-badge&logo=pypi&logoColor=white)](https://pypi.org/project/bigquery-data-science/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-statmike%2Fbigquery--data--science-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/statmike/bigquery-data-science)
+[![BigQuery ML Hub](https://img.shields.io/badge/BigQuery%20ML-61%20Notebooks%20%26%2058%20SQL-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)](https://github.com/statmike/bigquery-data-science/tree/main/bigquery-ml)
+[![BigQuery AI Hub](https://img.shields.io/badge/BigQuery%20AI-43%20Notebooks%20%26%2029%20SQL-0F9D58?style=for-the-badge&logo=google-cloud&logoColor=white)](https://github.com/statmike/bigquery-data-science/tree/main/bigquery-ai)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-4--Lens%20Progressive%20Disclosure-8E24AA?style=for-the-badge)](https://github.com/statmike/bigquery-data-science/blob/main/skills/PLANS.md)
 
-`data+ai/bq-ml` and `data+ai/bq-ai-functions` carry a genuine knowledge asset: `RESOURCES.md` files and ~100 tested notebooks with real, live-verified gotchas (exact error messages, exact metric swings across retrains, exact option interactions) that no base model's training data knows about. These skills package that knowledge — use-case-organized decision trees, verified gotchas, canonical snippets, and extracted notebook narratives — so an agent can use it directly instead of re-deriving it from scratch.
+> [!IMPORTANT]
+> **Graduated to a Standalone Repository & PyPI Package (`bigquery-data-science`):**
+> The BigQuery Agent Skills (`bigquery-data-science`, `bigquery-ml`, `bigquery-ai`), their 104 source notebooks, 87 SQL scripts, and verification CLI now live in a dedicated public repository — **[`statmike/bigquery-data-science`](https://github.com/statmike/bigquery-data-science)** — and are published on PyPI as **[`bigquery-data-science`](https://pypi.org/project/bigquery-data-science/)**.
+>
+> Instead of copying files by hand, you can now install the skills into any workspace or global agent profile with a single command (`uvx bigquery-data-science install` or `npx skills add statmike/bigquery-data-science`), query the catalog from your terminal, or attach the zero-dependency stdio MCP server.
 
-## Current skills
+---
 
-| Skill | Scope | Path |
-|---|---|---|
-| [`bigquery-ml`](.agents/skills/bigquery-ml/SKILL.md) | Training, evaluating, deploying, and monitoring BigQuery ML models | `.agents/skills/bigquery-ml/` |
-| [`bigquery-ai-functions`](.agents/skills/bigquery-ai-functions/SKILL.md) | Calling Gemini / generative AI functions from BigQuery SQL, plus the pre-trained Cloud AI services reached through a remote model | `.agents/skills/bigquery-ai-functions/` |
-| [`choosing-a-bigquery-ai-approach`](.agents/skills/choosing-a-bigquery-ai-approach/SKILL.md) | Triages between the two above when it's unclear which fits | `.agents/skills/choosing-a-bigquery-ai-approach/` |
+## Why `bigquery-data-science` Exists: Ground Truth $\to$ 4 Progressive Lenses
 
-More are planned from this repo's broader MLOps content — see `PLANS.md` for the backlog and authoring standard.
+General-purpose LLMs frequently hallucinate BigQuery SQL options, confuse the `ML.*` and `AI.*` namespaces, miss silent data-leakage traps, or waste context windows loading 200+ KB reference documents.
 
-## How discovery works
+`bigquery-data-science` solves this by pairing **104 live-executed BigQuery notebooks** with an automated distillation pipeline (`bigquery-data-science sweep`) that compiles verified SQL patterns and empirical gotchas into **4 progressive lenses**:
 
-Real skill content lives in `.agents/skills/<name>/` here in `agent-skills/`. At the repo root, per-skill symlinks make each skill discoverable by both conventions:
+```mermaid
+flowchart LR
+    subgraph GT["1. Ground-Truth Notebooks & SQL (GitHub)"]
+        direction TB
+        BQML["bigquery-ml/ (61 Notebooks · 58 SQL)<br/>23 Models · 12 Functions<br/>18 Workflows · 8 Pipelines"]
+        BQAI["bigquery-ai/ (43 Notebooks · 29 SQL)<br/>29 AI.* & ML.* Functions<br/>14 Multi-Function Workflows"]
+        REFS["13 Deep Reference Guides<br/>bigquery-ml/reference/ (5) · bigquery-ai/reference/ (8)<br/>Options · Gotchas · Pinned Models"]
+        BQML --- BQAI --- REFS
+    end
+    subgraph SYNC["2. Distillation & Verification"]
+        direction TB
+        SWEEP["bigquery-data-science sweep<br/>sync-syntax (H2 Slicer)<br/>convert-notebook (Clean MD)<br/>6-Gate CI & Link Audit"]
+        CLI["Zero-Dependency CLI & MCP<br/>uvx bigquery-data-science<br/>install · triage · lookup · search · mcp"]
+        SWEEP --> CLI
+    end
+    subgraph LENS["3. 4-Lens Progressive Disclosure (skills/)"]
+        direction TB
+        L1["Lens 1: 3 SKILL.md Routers (~8 KB)<br/>bigquery-data-science · bigquery-ml · bigquery-ai"]
+        L2["Lens 2: Reference Guides (14 files)<br/>Decision Matrices · Empirical Gotchas"]
+        L3["Lens 3: 137 Syntax Cards (< 25 KB)<br/>Surgical CREATE MODEL & AI.*/ML.* Cards"]
+        L4["Lens 4: 104 Narratives (~20 KB)<br/>Full Setup · IAM · SQL · BigFrames"]
+        L1 --> L2 --> L3 --> L4
+    end
 
-- **Claude Code**: `<repo-root>/.claude/skills/<name>` — Claude Code scans the working directory and every parent up to the repo root, so this is visible from anywhere in the monorepo.
-- **Antigravity, Codex, and other `.agents/skills/`-convention tools**: `<repo-root>/.agents/skills/<name>`.
+    GT --> SYNC --> LENS
 
-Both are per-skill symlinks pointing at the one real copy of the content in `agent-skills/.agents/skills/<name>/` — no duplication.
-
-## Skill anatomy
-
-Each skill is a self-contained directory:
-
-- `SKILL.md` — frontmatter (`name`, `description`) + a decision tree + cross-cutting gotchas + pointers to `reference/*.md`.
-- `reference/<bucket>.md` — one file per use-case bucket: options, how to choose among them, verified gotchas, a canonical snippet.
-- `narrative/*.md` — extracted markdown-and-code narrative from a flagship notebook per bucket (via `tooling/`'s notebook converter), preserving the compare-contrast reasoning and debugging stories that don't fit a reference table.
-- `skill.manifest.json` — version, source commit, and file inventory; the single source of truth other tooling (hub sync, marketplace listings, future PyPI packaging) reads from.
-
-Links into the source repo (notebooks, `RESOURCES.md`) are written as plain repo-relative text, not clickable relative links — they inform an agent where more depth lives if it happens to be inside this repo, and do nothing (no broken link) otherwise. Links between skills in this same collection (e.g. the triage skill pointing at `bigquery-ml`) are real relative links, since the whole collection is meant to travel together.
-
-## Tooling
-
-`tooling/` is an installable `uv`/Python package (`agent-skills-tooling`) providing the `agent-skills` CLI:
-
-```bash
-cd agent-skills/tooling
-uv sync
-
-# Build
-uv run agent-skills convert-notebook <notebook.ipynb> --subproject-root <root> --output <out.md>
-uv run agent-skills manifest ../.agents/skills/bigquery-ml
-uv run agent-skills validate ../.agents/skills/bigquery-ml
-uv run agent-skills validate ../.agents/skills --all
-
-# Check — run all of these before committing a change to a source project
-uv run agent-skills check-links ../../data+ai/bq-ml \
-  --sibling ../../data+ai/bq-ai-functions --repo-root ../..   # outward links, dead links, dead #anchors
-uv run agent-skills check-reference ../../data+ai/bq-ml       # RESOURCES.md index vs. reference/ pages
-uv run agent-skills check-narratives ../.agents/skills --repo-root ../..   # narrative/ vs. its source notebook
-uv run agent-skills check-pinned-models ../../data+ai/bq-ml \
-  --allow-file ../pinned-models.json --repo-root ../..        # every model/endpoint literal vs. the allow list
-
-# Or all of the above in one command, one exit code
-uv run agent-skills sweep ../.agents/skills --repo-root ../..
-
-# Tests for the tooling itself
-uv run pytest -q
+    classDef data fill:#E8F0FE,stroke:#4285F4,stroke-width:2px,color:#174EA6
+    classDef config fill:#FEF7E0,stroke:#F9AB00,stroke-width:2px,color:#7A5A00
+    classDef route fill:#FCE8E6,stroke:#EA4335,stroke-width:2px,color:#A50E0E
+    classDef compute fill:#E6F4EA,stroke:#34A853,stroke-width:2px,color:#0D652D
+    class BQML,BQAI,CLI data
+    class REFS,L2 config
+    class SWEEP,L1 route
+    class L3,L4 compute
 ```
 
-`sweep` discovers the source projects from each skill's `skill.manifest.json` (`source_project`), runs
-`validate --all`, then `check-links` (with the other projects as siblings), `check-reference` and
-`check-pinned-models` per project, then `check-narratives`, and exits non-zero if any step fails.
+---
 
-`check-pinned-models` inventories every `endpoint => '...'` / `model => '...'` literal (and the BigFrames
-`endpoint=` / `model=` keyword forms) across a project's notebooks, `.sql` files, fenced markdown code and
-`.py` files, ignoring syntax-table placeholders such as `'ENDPOINT'` or `'projects/PROJECT_ID/...'`. With
-`--allow-file` it fails on any literal not in the per-project allow list — [`pinned-models.json`](pinned-models.json)
-in this directory, keyed by repo-relative project path with `*` for everything. Retiring a model is then a
-one-line removal from the allow list, and the check lists every file that still names it.
+## Install & Use the Skills (`uvx`, `uv`, `pip`, `pipx`, `npx skills`, or MCP)
 
-`validate`, `check-links`, `check-reference`, `manifest` and `check-pinned-models` need only the standard
-library; `convert-notebook` and `check-narratives` import `nbformat` on demand, so the read-only checks
-run on a bare interpreter.
+The core [`bigquery-data-science`](https://pypi.org/project/bigquery-data-science/) package on PyPI has **zero third-party runtime dependencies** (`< 1.5 MB` wheel) and installs all three skills (`bigquery-data-science`, `bigquery-ml`, `bigquery-ai`) into `.agents/skills/` and `.claude/skills/`:
 
-`check-narratives` finds each skill's notebooks through `source_project` in its
-`skill.manifest.json`; a skill without that field, or without a `narrative/`, is skipped.
-Within that project a narrative is matched to its notebook by filename stem, which is
-unambiguous until two folders share a name (`functions/feature_store/` and
-`workflows/feature_store/`). That case is an **error**, not a silent first-match pick —
-resolve it with a `narrative_sources` entry in the manifest mapping the narrative's
-filename to its project-relative notebook. Each source project's `PLANS.md` documents
-the policy these checks enforce.
+```bash
+# Option A — Zero-install ephemeral CLI via uvx (recommended for instant setup):
+uvx bigquery-data-science install                     # installs into ./.agents/skills & ./.claude/skills
+uvx bigquery-data-science install --global            # installs into ~/.agents/skills & ~/.claude/skills
+uvx bigquery-data-science install --target agents     # only .agents/skills (Antigravity, Cursor, Codex, Windsurf)
+uvx bigquery-data-science install --target claude     # only .claude/skills (Claude Code)
 
-See `PLANS.md` for the authoring standard, the backlog, and what's planned beyond this local-repo phase (external hub repo, GitHub Action sync, Claude Code plugin marketplace, community catalog submissions, PyPI installer).
+# Option B — Persistent CLI install via uv tool, pipx, or pip:
+uv tool install bigquery-data-science && bigquery-data-science install
+pipx install bigquery-data-science && bigquery-data-science install
+pip install bigquery-data-science && bigquery-data-science install
+
+# Option C — Add to an existing Python project (uv or pip):
+uv add bigquery-data-science && uv run bigquery-data-science install
+pip install bigquery-data-science && python3 -m bigquery_data_science.cli install
+
+# Option D — skills.sh CLI (installs all 3 skills or an individual skill from GitHub):
+npx skills add statmike/bigquery-data-science
+npx skills add statmike/bigquery-data-science --skill bigquery-ml
+
+# Option E — Claude Code plugin marketplace & stdio MCP server:
+# In Claude Code: /plugin marketplace add statmike/bigquery-data-science
+#                 /plugin install bigquery-data-science
+claude mcp add bigquery-data-science -- uvx bigquery-data-science mcp
+```
+
+### Triage Tasks & Look Up Syntax from the Terminal
+
+You can also query the bundled catalog directly from your terminal without launching an agent:
+
+```bash
+# 1. List bundled skills and lens counts:
+uvx bigquery-data-science list
+
+# 2. Triage an ambiguous BigQuery ML vs BigQuery AI task (10 empirical head-to-head comparisons):
+uvx bigquery-data-science triage "forecast daily retail sales with holiday promotions"
+
+# 3. Fetch the surgical syntax card (< 25 KB) for any model or function:
+uvx bigquery-data-science lookup ARIMA_PLUS
+uvx bigquery-data-science lookup AI.FORECAST
+uvx bigquery-data-science lookup ML.ENTITY_FEATURES_AT_TIME
+
+# 4. Search across all 137 syntax cards, 14 reference guides, and 104 narratives:
+uvx bigquery-data-science search "point-in-time feature leakage"
+```
+
+---
+
+## The 3 Bundled Skills
+
+| Skill | Canonical Role | What It Covers | GitHub Entry Point |
+| :--- | :--- | :--- | :--- |
+| **[`bigquery-data-science`](https://github.com/statmike/bigquery-data-science/blob/main/skills/bigquery-data-science/SKILL.md)** | **Umbrella Router & Namespace Decoder** (`Workflow` + `Reviewer`) | Replaces `choosing-a-bigquery-ai-approach`. Routes between trained `CREATE MODEL` (`bigquery-ml`), zero-shot `AI.*`/`ML.*` (`bigquery-ai`), and hybrid pipelines; 10 empirical head-to-head task comparisons; complete `ML.*` vs `AI.*` prerequisite matrix ([`namespace-matrix.md`](https://github.com/statmike/bigquery-data-science/blob/main/skills/bigquery-data-science/reference/namespace-matrix.md)). | [`skills/bigquery-data-science/SKILL.md`](https://github.com/statmike/bigquery-data-science/blob/main/skills/bigquery-data-science/SKILL.md) |
+| **[`bigquery-ml`](https://github.com/statmike/bigquery-data-science/blob/main/skills/bigquery-ml/SKILL.md)** | **Trained Models, Preprocessing & Pipelines** (`Workflow` + `Generator` + `Tool Wrapper` + `Reviewer`) | 23 `CREATE MODEL` types (`LINEAR_REG`, `BOOSTED_TREE_*`, `ARIMA_PLUS`, `ARIMA_PLUS_XREG`, `KMEANS`, `PCA`, `MATRIX_FACTORIZATION`, `DNN_*`, `AUTOML_*`, `CONTRIBUTION_ANALYSIS`, imported `ONNX`/`TENSORFLOW`/`XGBOOST`), 20+ model-free `ML.*` preprocessing/drift/feature-time functions, 18 workflows, and 8 production orchestration patterns. | [`skills/bigquery-ml/SKILL.md`](https://github.com/statmike/bigquery-data-science/blob/main/skills/bigquery-ml/SKILL.md) |
+| **[`bigquery-ai`](https://github.com/statmike/bigquery-data-science/blob/main/skills/bigquery-ai/SKILL.md)** | **Foundation Models, Embeddings, Search & Document AI** (`Workflow` + `Generator` + `Tool Wrapper` + `Reviewer`) | Replaces `bigquery-ai-functions`. 29 SQL functions across `AI.GENERATE*`, `AI.IF`/`SCORE`/`CLASSIFY`/`AGG`, `AI.EMBED` + `VECTOR_SEARCH` + `AI.SEARCH`, `AI.FORECAST` + `AI.DETECT_ANOMALIES` (TimesFM), `AI.PREDICT` + `AI.EVALUATE` (TabFM), `AI.KEY_DRIVERS`, `AI.PARSE_DOCUMENT` + `ML.PROCESS_DOCUMENT`, and Cloud AI `ML.TRANSLATE`/`UNDERSTAND_TEXT`/`ANNOTATE_IMAGE`/`TRANSCRIBE`, plus 14 multi-function workflows. | [`skills/bigquery-ai/SKILL.md`](https://github.com/statmike/bigquery-data-science/blob/main/skills/bigquery-ai/SKILL.md) |
+
+---
+
+## How the 4 Progressive Lenses Prevent Context Bloat
+
+| Lens | Skill Path | Typical Size | When the Agent Loads It |
+| :--- | :--- | :--- | :--- |
+| **Lens 1 — Router & Guardrails** | [`skills/*/SKILL.md`](https://github.com/statmike/bigquery-data-science/tree/main/skills) | `~6–9 KB` | **Always first.** Task routing tree, critical SQL generation rules, cross-cutting empirical gotchas, and pre-delivery verification checklist. |
+| **Lens 2 — Decision & Gotcha Guide** | `skills/*/reference/*.md` | `~15–45 KB` | **When comparing options within a family** (e.g., choosing among forecasting models, orchestration engines, or `AI.IF` vs `AI.CLASSIFY` vs `AI.GENERATE_TABLE`). |
+| **Lens 3 — Surgical Syntax Card** | `skills/*/syntax/*.md` ([`ML Index`](https://github.com/statmike/bigquery-data-science/blob/main/skills/bigquery-ml/syntax/INDEX.md) · [`AI Index`](https://github.com/statmike/bigquery-data-science/blob/main/skills/bigquery-ai/syntax/INDEX.md)) | `4–15 KB` (`< 25 KB` enforced) | **When writing SQL for a specific model or function.** Sliced automatically by H2 (`## `) from `reference/*.md` so agents never load a 218 KB monolith. |
+| **Lens 4 — Worked Textbook Narrative** | `skills/*/narrative/*.md` (`104` files) | `~15–30 KB` | **Only when building a full end-to-end pipeline** (including GCP IAM, Cloud Resource Connections, reservations, and multi-step SQL / BigFrames choreography). Never loads raw `.ipynb` JSON. |
+
+---
+
+## Explore the Source Notebooks & Reference Hubs
+
+- **Standalone Repository Front Door:** **[`statmike/bigquery-data-science`](https://github.com/statmike/bigquery-data-science)**
+- **PyPI Package (`v0.7.0`):** **[`pypi.org/project/bigquery-data-science`](https://pypi.org/project/bigquery-data-science/)**
+- **Skill Authoring & Verification Standard:** **[`skills/PLANS.md`](https://github.com/statmike/bigquery-data-science/blob/main/skills/PLANS.md)**
+- **BigQuery ML Signpost & Catalog (`61` notebooks · `58` SQL):** **[`../data+ai/bq-ml/README.md`](../data+ai/bq-ml/README.md)** · **[`statmike/bigquery-data-science/bigquery-ml`](https://github.com/statmike/bigquery-data-science/tree/main/bigquery-ml)**
+- **BigQuery AI Signpost & Catalog (`43` notebooks · `29` SQL):** **[`../data+ai/bq-ai-functions/README.md`](../data+ai/bq-ai-functions/README.md)** · **[`statmike/bigquery-data-science/bigquery-ai`](https://github.com/statmike/bigquery-data-science/tree/main/bigquery-ai)**

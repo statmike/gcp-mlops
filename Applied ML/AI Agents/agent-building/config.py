@@ -150,14 +150,21 @@ WEB_MODEL_LOCATION = os.getenv("WEB_MODEL_LOCATION", "global")
 # few regions; `global` returns INTERNAL. Default to us-central1.
 SKILL_REGISTRY_LOCATION = os.getenv("SKILL_REGISTRY_LOCATION", "us-central1")
 
-# Where the skill bundles to publish live. This demo reuses the sibling
-# `agent-skills/` project's bundles (SKILL.md + reference/ + narrative/) rather
-# than authoring throwaway ones. Default resolves to that project relative to the
-# repo root; override to point at any directory of skill bundles.
-_DEFAULT_SKILLS_SRC = (
-    Path(__file__).resolve().parents[3] / "agent-skills" / ".agents" / "skills"
-)
-SKILLS_SOURCE_DIR = os.getenv("SKILLS_SOURCE_DIR", str(_DEFAULT_SKILLS_SRC))
+# Where the skill bundles to publish live. This demo reuses the packaged
+# `bigquery-data-science` skill bundles (from `pip install bigquery-data-science`
+# or `uvx bigquery-data-science install`, see statmike/bigquery-data-science)
+# rather than authoring throwaway ones. Override SKILLS_SOURCE_DIR to point at
+# any directory of skill bundles.
+def _default_skills_src() -> str:
+    try:
+        import bigquery_data_science
+
+        return str(bigquery_data_science.get_skills_dir())
+    except Exception:
+        return str(Path(__file__).resolve().parent / ".agents" / "skills")
+
+
+SKILLS_SOURCE_DIR = os.getenv("SKILLS_SOURCE_DIR", _default_skills_src())
 
 # ---------------------------------------------------------------------------
 # Model Armor (Govern pillar — prompt/response guardrails)

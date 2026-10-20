@@ -27,18 +27,19 @@ Every contribution must follow these security and privacy rules:
 
 Depending on what your pull request touches, run the relevant checks before submitting:
 
-### Agent Skills & BigQuery Reference Workflows (`agent-skills/`, `data+ai/bq-ml/`, `data+ai/bq-ai-functions/`)
+### Header & Link Hygiene (`architectures/headers/sync_headers.py`)
 
-If you modify any file under [`agent-skills/`](./agent-skills/README.md), [`data+ai/bq-ml/`](./data+ai/bq-ml/README.md), or [`data+ai/bq-ai-functions/`](./data+ai/bq-ai-functions/README.md), run the `agent-skills` verification sweep and test suite:
+When adding or updating notebooks (`.ipynb`) or markdown guides (`.md`) in `gcp-mlops`, verify that standard repository headers are in sync:
 
 ```bash
-cd agent-skills/tooling
-uv sync
-uv run agent-skills sweep ../.agents/skills --repo-root ../..
-uv run pytest -q
+python3 architectures/headers/sync_headers.py --check
+# Or apply headers automatically:
+python3 architectures/headers/sync_headers.py --apply
 ```
 
-`sweep` validates all skill manifests, outward/sibling markdown links and `#anchors`, `RESOURCES.md` coverage, extracted notebook narratives, and pinned model allowlists ([`agent-skills/pinned-models.json`](./agent-skills/pinned-models.json)).
+### BigQuery ML, BigQuery AI & Agent Skills ([`statmike/bigquery-data-science`](https://github.com/statmike/bigquery-data-science))
+
+The BigQuery ML (`bigquery-ml/`), BigQuery AI (`bigquery-ai/`), and 4-Lens Agent Skills (`skills/`) curricula have graduated to the standalone repository **[`statmike/bigquery-data-science`](https://github.com/statmike/bigquery-data-science)** and Python package **[`bigquery-data-science` on PyPI](https://pypi.org/project/bigquery-data-science/)**. Please open issues or pull requests for those notebooks, SQL scripts, and skills directly in [`statmike/bigquery-data-science`](https://github.com/statmike/bigquery-data-science) (see its local [`CONTRIBUTING.md`](https://github.com/statmike/bigquery-data-science/blob/main/CONTRIBUTING.md) for the `uv run bigquery-data-science sweep` verification gate).
 
 ### Python Subprojects (`Applied ML/`, `data+ai/`, `MLOps/`)
 

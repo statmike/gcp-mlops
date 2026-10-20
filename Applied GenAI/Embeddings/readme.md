@@ -131,7 +131,7 @@ The notebook workflow in "[BQML Autoencoder As Table Embedding](./BQML%20Autoenc
 
 ## Deeper Examples
 
-Embeddings-as-features hierarchical classification (categorize a store catalog by training a classifier on product/hierarchy-node embeddings) has moved and been modernized — it was actually a BigQuery ML workflow, not a `google-genai` SDK topic. See [`data+ai/bq-ml/workflows/embeddings_classification/`](../../data+ai/bq-ml/workflows/embeddings_classification/) for the current version (`AI.EMBED` + native SQL `BOOSTED_TREE_CLASSIFIER`).
+Embeddings-as-features hierarchical classification (categorize a store catalog by training a classifier on product/hierarchy-node embeddings) has moved and been modernized — it was actually a BigQuery ML workflow, not a `google-genai` SDK topic. See [`data+ai/bq-ml/workflows/embeddings_classification/`](https://github.com/statmike/bigquery-data-science/tree/main/bigquery-ml/workflows/embeddings_classification) for the current version (`AI.EMBED` + native SQL `BOOSTED_TREE_CLASSIFIER`).
 
 ## Legacy
 

@@ -46,10 +46,13 @@ capability — instructions, references, and examples an agent or a developer ca
 pull in on demand. Instead of hard-wiring a capability into one agent, you
 publish it once and let any agent **discover** it by natural-language query.
 
-This folder does not author throwaway skills. It **reuses the sibling
-[`agent-skills/`](../../../../agent-skills) project's bundles** — the same
-packaged BigQuery skills that project already ships — and registers them in the
-platform, then demonstrates semantic retrieval.
+This folder does not author throwaway skills. It **reuses the
+[`bigquery-data-science`](https://pypi.org/project/bigquery-data-science/) package's
+skill bundles** ([`statmike/bigquery-data-science`](https://github.com/statmike/bigquery-data-science)
+· [local signpost](../../../../agent-skills/README.md)) — the packaged 4-Lens
+BigQuery ML and BigQuery AI skills (`bigquery-data-science`, `bigquery-ml`,
+`bigquery-ai`) — and registers them in the platform, then demonstrates semantic
+retrieval.
 
 ## Two different "skills" — don't conflate them
 
@@ -70,6 +73,7 @@ just solve different problems.
 ## Run it
 
 ```bash
+uv add bigquery-data-science                   # or: uvx bigquery-data-science install
 uv run python skills/registry.py publish      # upload every bundle under SKILLS_SOURCE_DIR
 uv run python skills/registry.py list          # list registered skills
 uv run python skills/registry.py retrieve "how do I forecast sales in BigQuery?"
@@ -77,7 +81,7 @@ uv run python skills/registry.py delete <skill_id>
 ```
 
 `publish` discovers every bundle under `config.SKILLS_SOURCE_DIR` (defaulting to
-the `agent-skills/` sibling), reads each `SKILL.md`'s front matter for the
+`bigquery_data_science.get_skills_dir()` or `.agents/skills/`), reads each `SKILL.md`'s front matter for the
 display name and description, and creates the skill (replacing an existing one of
 the same id so a changed bundle actually re-uploads). `retrieve` is the payoff:
 a natural-language query is matched **semantically** against the registered
@@ -115,4 +119,4 @@ pure (discovery + a small YAML-front-matter parser) and covered by
 
 - [Skill Registry overview](https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/skill-registry)
 - [`Skills` client reference (`create` / `retrieve`)](https://docs.cloud.google.com/python/docs/reference/agentplatform/latest/vertexai._genai.skills.Skills)
-- [`agent-skills/` — the sibling project whose bundles this registers](../../../../agent-skills)
+- [`bigquery-data-science` on PyPI](https://pypi.org/project/bigquery-data-science/) · [`statmike/bigquery-data-science` on GitHub](https://github.com/statmike/bigquery-data-science) · [`agent-skills/` signpost](../../../../agent-skills/README.md)
