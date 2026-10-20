@@ -73,7 +73,7 @@ flowchart TD
 - **[Keras (`Keras/`)](./Keras/readme.md)** (3 notebooks) — Multi-backend Keras 3 running on JAX and TensorFlow backends, autoencoder training, and BigQuery serving.
 - **[CatBoost (`CatBoost/`)](./CatBoost/readme.md)** (3 notebooks) — Gradient boosted trees served via custom FastAPI containers with Feature Store integration.
 - **[Flax / JAX (`Flax/`)](./Flax/readme.md)** (1 notebook) — Neural network training and serving with JAX and Flax.
-- **[BigQuery ML (`BQML/`)](./BQML/readme.md)** — Connects this shared dataset to BigQuery ML (for the full 62-notebook BigQuery ML curriculum, see [`data+ai/bq-ml/`](../data+ai/bq-ml/README.md)).
+- **[BigQuery ML (`BQML/`)](./BQML/readme.md)** — Connects this shared dataset to BigQuery ML (for the full BigQuery ML curriculum, see [`data+ai/bq-ml/`](../data+ai/bq-ml/README.md) and [`statmike/bigquery-data-science/bigquery-ml`](https://github.com/statmike/bigquery-data-science/tree/main/bigquery-ml)).
 
 ### Additional Foundational Framework Series at Repo Root
 - **[`04 - scikit-learn`](../04%20-%20scikit-learn/readme.md)** (12 notebooks) & **[`05 - TensorFlow`](../05%20-%20TensorFlow/readme.md)** (28 notebooks) — Custom training jobs (script, source distribution, custom container), hyperparameter tuning, Vertex AI Pipelines, explainability, and serving.
