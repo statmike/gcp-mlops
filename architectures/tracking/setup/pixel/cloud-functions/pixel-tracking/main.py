@@ -1,7 +1,6 @@
 import datetime
 import json
 import flask
-from flask import abort
 from google.cloud import pubsub_v1
 
 PROJECT_ID = 'vertex-ai-mlops-369716'
@@ -30,8 +29,8 @@ def pixel_tracking(request: flask.Request) -> flask.Response:
                 trigger = 'manual'
             )
         else:
-            return abort(406) # not acceptable
+            return flask.Response(status=204)
     else:
-        return abort(404) # bad request
+        return flask.Response(status=204)
     
     return flask.send_file('pixel.png', max_age=0)
